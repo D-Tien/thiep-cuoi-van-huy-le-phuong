@@ -241,7 +241,7 @@ body {
   .open-btn {
     font-size: 0.8rem;
     padding: 13px 36px;
-    bottom: 30%;
+    bottom: 32%;
   }
 
   .music-toggle {
@@ -258,7 +258,7 @@ body {
   }
 
   /* Tất cả ảnh trừ ảnh số 2 và số 3 sẽ to hơn */
-  .container img:not(:nth-child(2)):not(:nth-child(3)) {
+  .container img:not(:nth-child(2)):not(:nth-child(3):not(:nth-child(4))) {
     width: 100%;
     height: auto;
     min-height: 520px; /* Điều chỉnh độ cao nếu cần */
@@ -268,7 +268,8 @@ body {
 
   /* Ảnh số 2 và số 3 giữ nguyên kích thước gốc */
   .container img:nth-child(2),
-  .container img:nth-child(3) {
+  .container img:nth-child(3),
+  :not(:nth-child(4)) {
     width: 100%;
     height: auto;
     min-height: auto;
