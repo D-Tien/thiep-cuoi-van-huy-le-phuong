@@ -1,0 +1,285 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #120000;
+  overflow-x: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== INTRO ==================== */
+
+#intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at center,
+    rgba(120, 0, 0, 0.9) 0%,
+    #2a0000 45%,
+    #120000 100%
+  );
+}
+
+#intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    transparent 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.bg-glow {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255, 80, 0, 0.25), transparent 70%);
+  filter: blur(90px);
+}
+
+.double-happiness {
+  position: absolute;
+  color: #e7c77d;
+  opacity: 0.15;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.double-happiness.left {
+  left: 7%;
+  top: 32%;
+}
+.double-happiness.right {
+  right: 7%;
+  top: 24%;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(255, 220, 150, 0.3) 1px,
+    transparent 1px
+  );
+  background-size: 80px 80px;
+  animation: moveParticles 18s linear infinite;
+  opacity: 0.25;
+}
+
+.cover-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.cover-card {
+  width: min(720px, 92vw);
+  max-height: 88vh;
+  object-fit: contain;
+  display: block;
+  animation: floatCard 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.45));
+  border-radius: 12px;
+}
+
+.open-btn {
+  position: absolute;
+  bottom: 19%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  outline: none;
+  background: #f1d7a2;
+  color: #4d0000;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 18px 52px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 220, 160, 0.7);
+  animation: pulse 2s infinite;
+  z-index: 10;
+}
+
+.open-btn:hover {
+  transform: translateX(-50%) scale(1.08);
+}
+
+/* ==================== MAIN CONTENT (Trang chính sau khi mở) ==================== */
+
+.container {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: #7a0000;
+}
+
+/* Images */
+.container img {
+  width: 100%;
+  display: block;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  object-fit: contain; /* ← Sửa cái này */
+  object-position: center; /* Căn giữa ảnh */
+}
+
+/* Fade animation */
+.fade-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Music button */
+.music-toggle {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #b71c1c;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+  transform: scale(1.08);
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes floatCard {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 220, 160, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 220, 160, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 220, 160, 0.4);
+  }
+}
+
+@keyframes moveParticles {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-120px);
+  }
+}
+
+/* Fade out intro */
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: 1.2s ease;
+}
+
+/* ==================== MOBILE ==================== */
+
+@media (max-width: 768px) {
+  .double-happiness {
+    font-size: 48px;
+  }
+
+  .cover-card {
+    width: min(92vw, 520px);
+  }
+
+  .open-btn {
+    font-size: 0.8rem;
+    padding: 13px 36px;
+    bottom: 30%;
+  }
+
+  .music-toggle {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  /* Tất cả ảnh trừ ảnh số 2 và số 3 sẽ to hơn */
+  .container img:not(:nth-child(2)):not(:nth-child(3)) {
+    width: 100%;
+    height: auto;
+    min-height: 520px; /* Điều chỉnh độ cao nếu cần */
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Ảnh số 2 và số 3 giữ nguyên kích thước gốc */
+  .container img:nth-child(2),
+  .container img:nth-child(3) {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    object-fit: contain;
+  }
+  .container img:nth-child(2),
+  .container img:nth-child(3) {
+    width: 100%;
+    height: auto;
+    min-height: 220px; /* ≈ 520px × 1.2 */
+    object-fit: cover;
+    object-position: center;
+  }
+}
