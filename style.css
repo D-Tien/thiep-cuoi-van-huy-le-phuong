@@ -241,7 +241,7 @@ body {
   .open-btn {
     font-size: 0.8rem;
     padding: 13px 36px;
-    bottom: 35%;
+    bottom: 33%;
   }
 
   .music-toggle {
@@ -276,7 +276,7 @@ body {
   }
 
   .container img:nth-child(3) {
-    min-height: 230px; /* ← Chỉnh chiều cao ảnh 3 ở đây */
+    min-height: 225px; /* ← Chỉnh chiều cao ảnh 3 ở đây */
     object-fit: cover;
     object-position: center;
   }
