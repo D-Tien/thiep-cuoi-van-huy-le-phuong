@@ -258,28 +258,36 @@ body {
   }
 
   /* Tất cả ảnh trừ ảnh số 2 và số 3 sẽ to hơn */
-  .container img:not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)) {
+  /* Các ảnh khác (1, 5, 6...) giữ kích thước bình thường */
+  .container
+    img:not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(
+      :nth-child(5)
+    ) {
     width: 100%;
-    height: auto;
-    min-height: 520px; /* Điều chỉnh độ cao nếu cần */
+    min-height: 520px;
     object-fit: cover;
     object-position: center;
   }
 
-  /* Ảnh số 2 và số 3 giữ nguyên kích thước gốc */
-  .container img:nth-child(2),
-  .container img:nth-child(3),
-  :not(:nth-child(4)) {
-    width: 100%;
-    height: auto;
-    min-height: auto;
-    object-fit: contain;
+  .container img:nth-child(2) {
+    min-height: 300px; /* ← Chỉnh chiều cao ảnh 2 ở đây */
+    object-fit: cover;
+    object-position: center;
   }
-  .container img:nth-child(2),
+
   .container img:nth-child(3) {
-    width: 100%;
-    height: auto;
-    min-height: 220px; /* ≈ 520px × 1.2 */
+    min-height: 230px; /* ← Chỉnh chiều cao ảnh 3 ở đây */
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .container img:nth-child(4) {
+    min-height: 500px; /* ← Chỉnh chiều cao ảnh 4 ở đây */
+    object-fit: cover;
+    object-position: center;
+  }
+  .container img:nth-child(5) {
+    min-height: 250px; /* ← Chỉnh chiều cao ảnh 4 ở đây */
     object-fit: cover;
     object-position: center;
   }
